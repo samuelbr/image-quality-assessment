@@ -12,11 +12,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       wget && \
     rm -rf /var/lib/apt/lists/*
 
-COPY app.py /
-COPY src /src
-COPY entrypoints /src/entrypoints
+COPY app.py /app/
+COPY src /app/
+COPY models /app/
 
-WORKDIR /src
+WORKDIR /app
 
 RUN pip install -r requirements.txt
 
@@ -24,4 +24,4 @@ RUN pip install flask pillow requests
 
 ENV PYTHONPATH='/src/:$PYTHONPATH'
 
-ENTRYPOINT ["entrypoints/entrypoint.train.cpu.sh"]
+ENTRYPOINT ["/app/app.py"]
