@@ -24,4 +24,4 @@ RUN pip install flask pillow requests
 
 ENV PYTHONPATH='/src/:$PYTHONPATH'
 
-ENTRYPOINT ["/app/app.py"]
+CMD ["python3", "app.py"]
